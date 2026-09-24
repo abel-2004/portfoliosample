@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Abel George, a Computer Science graduate focused on software, data, testing, and machine learning.">
+  <title>Abel George | Computer Science Graduate</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      --ink: #202124;
+      --muted: #686a66;
+      --paper: #f4f1eb;
+      --cream: #fbfaf7;
+      --lime: #d8f36b;
+      --coral: #fa765e;
+      --line: #d6d2ca;
+      --shadow: 0 18px 45px rgba(32, 33, 36, 0.09);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+
+    header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -0.04em; }
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      font-size: 0.85rem;
+    }
+    nav { display: flex; gap: 30px; font-size: 0.9rem; }
+    nav a { position: relative; }
+    nav a::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px; background: var(--coral); transition: width 0.25s ease; }
+    nav a:hover::after { width: 100%; }
+
+    .hero { min-height: 680px; display: grid; align-items: center; padding: 62px 0 110px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: center; }
+    .eyebrow, .section-label { color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    h1 { max-width: 720px; margin: 16px 0 26px; font-size: clamp(3.7rem, 8vw, 7.5rem); line-height: 0.92; letter-spacing: -0.08em; font-weight: 600; }
+    .hero-copy { max-width: 440px; margin: 0; color: var(--muted); font-size: 1.1rem; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button { display: inline-flex; align-items: center; gap: 12px; padding: 13px 18px; border: 1px solid var(--ink); border-radius: 100px; font-size: 0.9rem; transition: transform 0.2s ease, background 0.2s ease; }
+    .button:hover { transform: translateY(-3px); }
+    .button.primary { background: var(--ink); color: var(--cream); }
+    .button.secondary { background: transparent; }
+    .arrow { font-size: 1.1rem; line-height: 0; }
+
+    .hero-art { position: relative; height: 400px; }
+    .portrait-card { position: absolute; right: 4%; top: 12%; width: 275px; height: 340px; padding: 18px; background: var(--coral); transform: rotate(5deg); box-shadow: var(--shadow); }
+    .portrait-card::before { content: ''; display: block; height: 100%; border: 1px solid rgba(32, 33, 36, 0.4); }
+    .portrait { position: absolute; inset: 48px 48px 50px 48px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; background: #f2c39c; }
+    .portrait::before { content: ''; position: absolute; top: 22px; width: 112px; height: 145px; border-radius: 50% 50% 45% 45%; background: #272324; box-shadow: 0 -16px 0 7px #272324; }
+    .portrait::after { content: ''; position: absolute; bottom: -50px; width: 178px; height: 190px; border-radius: 50% 50% 0 0; background: #313c44; }
+    .portrait-note { position: absolute; right: 15px; bottom: 12px; font-family: 'DM Mono', monospace; font-size: 0.63rem; }
+    .sun { position: absolute; top: 2%; right: 11%; width: 105px; height: 105px; border-radius: 50%; background: var(--lime); }
+    .scribble { position: absolute; left: -7%; bottom: 14%; color: var(--coral); font-family: 'DM Mono', monospace; font-size: 0.75rem; transform: rotate(-12deg); }
+    .scribble::after { content: ''; display: block; width: 90px; height: 1px; margin-top: 8px; background: currentColor; transform: rotate(-7deg); }
+
+    section { padding: 115px 0; border-top: 1px solid var(--line); }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; margin-bottom: 48px; }
+    h2 { max-width: 530px; margin: 12px 0 0; font-size: clamp(2.2rem, 5vw, 4.3rem); line-height: 0.97; letter-spacing: -0.07em; font-weight: 600; }
+    .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .project { display: block; }
+    .project-image { position: relative; display: grid; min-height: 330px; place-items: center; overflow: hidden; }
+    .project-image::after { content: ''; position: absolute; inset: 18px; border: 1px solid rgba(32, 33, 36, 0.18); pointer-events: none; }
+    .project:nth-child(1) .project-image { background: var(--lime); }
+    .project:nth-child(2) .project-image { background: #b6d6dc; }
+    .project:nth-child(3) .project-image { background: #e8b3a2; }
+    .project:nth-child(4) .project-image { background: #e6ddbe; }
+    .project-title-card { position: relative; z-index: 1; display: grid; place-items: center; width: 66%; aspect-ratio: 1.3; background: var(--cream); box-shadow: 12px 14px 0 rgba(32, 33, 36, 0.9); transform: rotate(-4deg); }
+    .project:nth-child(even) .project-title-card { transform: rotate(4deg); }
+    .project-title-card span { max-width: 180px; text-align: center; font-size: clamp(1.4rem, 3vw, 2.5rem); line-height: 0.95; letter-spacing: -0.07em; }
+    .project-meta { display: flex; justify-content: space-between; gap: 16px; padding: 15px 0 0; font-size: 0.9rem; }
+    .project-meta span:last-child { color: var(--muted); }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .about-copy { max-width: 500px; font-size: 1.35rem; line-height: 1.25; letter-spacing: -0.03em; }
+    .about-copy strong { color: var(--coral); font-weight: 500; }
+    .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .resume-card { padding: 26px; border-top: 2px solid var(--ink); background: var(--cream); }
+    .resume-card h3 { margin: 0 0 18px; font-size: 1.35rem; letter-spacing: -0.04em; }
+    .resume-card p { margin: 0; color: var(--muted); }
+    .resume-card + .resume-card { margin-top: 22px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .tag-list li { padding: 7px 10px; border: 1px solid var(--line); border-radius: 100px; font-family: 'DM Mono', monospace; font-size: 0.72rem; }
+    .timeline-item { display: grid; grid-template-columns: 125px 1fr; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .timeline-item:first-child { padding-top: 0; }
+    .timeline-item:last-child { border-bottom: 0; padding-bottom: 0; }
+    .timeline-date { color: var(--coral); font-family: 'DM Mono', monospace; font-size: 0.72rem; text-transform: uppercase; }
+    .timeline-item strong { display: block; margin-bottom: 4px; }
+    .timeline-item span { color: var(--muted); font-size: 0.9rem; }
+    .facts { border-top: 1px solid var(--ink); }
+    .fact { display: flex; justify-content: space-between; gap: 20px; padding: 17px 0; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
+    .fact span:first-child { color: var(--muted); }
+
+    .contact { position: relative; overflow: hidden; background: var(--ink); color: var(--cream); }
+    .contact::before { content: ''; position: absolute; top: -100px; right: 12%; width: 230px; height: 230px; border-radius: 50%; background: var(--coral); }
+    .contact-inner { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 50px; align-items: end; }
+    .contact h2 { color: var(--cream); }
+    .contact .section-label { color: #aaa9a3; }
+    .contact .button.primary { color: var(--ink); background: var(--lime); border-color: var(--lime); }
+    footer { display: flex; justify-content: space-between; padding: 28px 0; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.7rem; text-transform: uppercase; }
+
+    .reveal { opacity: 0; transform: translateY(18px); animation: reveal 0.8s ease forwards; }
+    .delay-1 { animation-delay: 0.12s; } .delay-2 { animation-delay: 0.24s; } .delay-3 { animation-delay: 0.36s; }
+    @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 32px, 560px); }
+      header { padding: 20px 0; } nav { gap: 15px; font-size: 0.78rem; } nav a:nth-child(1) { display: none; }
+      .hero { min-height: auto; padding: 70px 0 90px; } .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 42px; }
+      h1 { font-size: clamp(3.7rem, 18vw, 6rem); } .hero-art { height: 320px; } .portrait-card { right: 8%; width: 220px; height: 280px; } .portrait { inset: 40px; } .sun { right: 7%; width: 75px; height: 75px; }
+      section { padding: 78px 0; } .section-heading { display: block; margin-bottom: 30px; } .section-heading > span { display: block; margin-bottom: 18px; }
+      .work-grid, .resume-grid { grid-template-columns: 1fr; gap: 40px; } .project-image { min-height: 270px; }
+      .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+      .about-copy { font-size: 1.15rem; } .contact-inner { display: block; } .contact .button-row { margin-top: 32px; } footer { display: block; line-height: 2; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="brand" href="#top" aria-label="Abel George home"><span class="brand-mark">A</span> Abel George</a>
+      <nav aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+  </div>
+
+  <main id="top">
+    <section class="hero" style="border-top: 0;">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow reveal">Computer Science Graduate / Thrissur, Kerala</div>
+          <h1 class="reveal delay-1">Meet Abel George.</h1>
+          <p class="hero-copy reveal delay-2">A motivated and detail-oriented developer exploring software, data, testing, and machine learning to build useful technology.</p>
+          <div class="button-row reveal delay-3">
+            <a class="button primary" href="#work">Explore my work <span class="arrow" aria-hidden="true">↓</span></a>
+            <a class="button secondary" href="mailto:abelgeorgea1@gmail.com">Get in touch <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-art reveal delay-2" aria-label="Abstract portrait illustration">
+          <div class="sun"></div>
+          <div class="portrait-card"><div class="portrait"></div><span class="portrait-note">AG / 2026</span></div>
+          <div class="scribble">curious mind<br>building forward</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <div class="section-heading"><div><div class="section-label">01 / Selected work</div><h2>Projects where code meets curiosity.</h2></div><span class="section-label">Scroll to explore ↓</span></div>
+        <div class="work-grid">
+          <a class="project" href="#contact"><div class="project-image"><div class="project-title-card"><span>AI<br>IDS</span></div></div><div class="project-meta"><strong>AI Intrusion Detection System</strong><span>Packet sniffing + ML / 2024–26</span></div></a>
+          <a class="project" href="#contact"><div class="project-image"><div class="project-title-card"><span>Resume<br>AI</span></div></div><div class="project-meta"><strong>AI Resume Analyzer</strong><span>Python + NLP / 2024</span></div></a>
+          <a class="project" href="#contact"><div class="project-image"><div class="project-title-card"><span>Cloud<br>Lab</span></div></div><div class="project-meta"><strong>AWS Solutions Architecture</strong><span>Virtual internship / 2025</span></div></a>
+          <a class="project" href="#contact"><div class="project-image"><div class="project-title-card"><span>Data<br>Focus</span></div></div><div class="project-meta"><strong>Analytics &amp; testing toolkit</strong><span>SQL, Tableau, Power BI</span></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div><div class="section-label">02 / A little context</div><p class="about-copy">I'm Abel, a Computer Science graduate from <strong>Sahrdaya College of Engineering and Technology.</strong> I enjoy turning technical ideas into practical products, and I bring analytical thinking, communication, and a steady curiosity to every problem.</p></div>
+        <div class="facts"><div class="fact"><span>Focus</span><span>Software, data, testing, ML</span></div><div class="fact"><span>Education</span><span>B.Tech CSE / CGPA 7.68</span></div><div class="fact"><span>Location</span><span>Thrissur, Kerala</span></div><div class="fact"><span>Outside work</span><span>Football, cricket, music</span></div></div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="container">
+        <div class="section-heading"><div><div class="section-label">03 / Resume highlights</div><h2>The toolkit behind the work.</h2></div></div>
+        <div class="resume-grid">
+          <div>
+            <div class="resume-card"><h3>Technical skills</h3><ul class="tag-list"><li>C</li><li>Python</li><li>HTML</li><li>CSS</li><li>SQL</li><li>PL/SQL</li><li>MySQL</li><li>GitHub</li><li>VS Code</li><li>Jira</li><li>Postman</li><li>Tableau</li><li>Power BI</li><li>Excel</li></ul></div>
+            <div class="resume-card"><h3>Testing &amp; strengths</h3><p>Manual testing, SDLC, STLC, strong communication, analytical thinking, problem solving, and a hardworking approach.</p></div>
+            <div class="resume-card"><h3>Certifications</h3><p>Crash Course on Python · Excel Basics for Data Analytics · Automation and Modern Testing Tools · Google Data Analytics Professional Certificate</p></div>
+          </div>
+          <div class="resume-card"><h3>Education &amp; experience</h3><div class="timeline-item"><div class="timeline-date">Oct 2022 – May 2026</div><div><strong>B.Tech in Computer Science and Engineering</strong><span>Sahrdaya College of Engineering and Technology, Thrissur<br>CGPA: 7.68</span></div></div><div class="timeline-item"><div class="timeline-date">Jul 2025</div><div><strong>AWS Solutions Architecture</strong><span>Forage virtual internship focused on scalable cloud infrastructure.</span></div></div><div class="timeline-item"><div class="timeline-date">Oct 2020 – Mar 2022</div><div><strong>Higher Secondary Education</strong><span>St Joseph’s Higher Secondary School, Avinissery<br>Percentage: 95.5%</span></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container contact-inner"><div><div class="section-label">04 / Start a conversation</div><h2>Let's build<br>something useful.</h2></div><div class="button-row"><a class="button primary" href="mailto:abelgeorgea1@gmail.com">abelgeorgea1@gmail.com <span class="arrow" aria-hidden="true">↗</span></a><a class="button secondary" href="tel:+919400535623">+91 94005 35623 <span class="arrow" aria-hidden="true">↗</span></a></div></div>
+    </section>
+  </main>
+
+  <div class="container"><footer><span>© 2026 Abel George</span><span><a href="https://www.linkedin.com/in/abelgeorge/">LinkedIn</a> / <a href="https://github.com/abel-2004">GitHub</a> / Thrissur, Kerala</span></footer></div>
+</body>
+</html>
